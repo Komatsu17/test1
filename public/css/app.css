@@ -1,0 +1,80 @@
+/* geral */
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .w30{
+        width: 30%;
+    }
+
+    .w50{
+        width: 50%;
+    }
+
+    .w70{
+        width: 70%;
+    }
+
+    .clear{
+        clear: both;
+    }
+
+    .center{
+        max-width: 98%;
+        padding: 1%;
+        margin: auto;
+    }
+
+    .right{
+        float: right;
+    }
+
+    .left{
+        float: left;
+    }
+
+/* header */
+
+    header, footer{
+        background-color: black;
+        padding: 1%;
+        transition: 0.3s;
+    }
+
+        header a, footer a{
+            text-decoration: none;
+            color: white;
+        }
+            header a:hover, footer a:hover{
+                opacity: 0.8;
+            }
+        header nav {
+            text-align: right;
+            font-size: 25px;
+        }
+            header nav ul li{
+                display: inline;
+                padding: 0 30px;
+            }
+
+/* footer */
+
+    footer nav {
+        font-size: 25px;
+    }
+        footer nav ul li{
+            padding: 10px 0;
+        }
+
+/* pagina welcome */
+
+    .welcomeIntro h1{
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+    .welcomeIntro p{
+        font-size: 17px;
+    }
