@@ -68,7 +68,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        return view('message.edit');
+        // 
     }
 
     /**
@@ -80,15 +80,16 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
+
         $data = $request->input();
 
         $message->first_name = $data['first_name'];
-        $message->first_name = $data['last_name'];
-        $message->first_name = $data['email'];
-        $message->first_name = $data['content'];
-        $message->update();
+        $message->last_name = $data['last_name'];
+        $message->email = $data['email'];
+        $message->content = $data['content'];
+        $message->save();
 
-        return redirect('message.index')->with('status', 'Mensagem Modificada');
+        return redirect()->route('message.index')->with('status', 'Mensagem Modificada');
     }
 
     /**

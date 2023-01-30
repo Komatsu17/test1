@@ -15,14 +15,14 @@
             <div>
                 {{ $message->content }}
             </div>
+            <form action="{{ route('edit', $message) }}" method="GET">
+                @csrf
+                <button type="submit">Editar</button>
+            </form>
             <form action="{{ route('message.destroy', $message) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit">Deletar</button>
-            </form>
-            <form action="{{ route('message.edit', $message) }}" method="POST">
-                @csrf
-                <button type="submit">Editar</button>
             </form>
             <hr />
         </div>

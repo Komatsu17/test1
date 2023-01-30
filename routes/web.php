@@ -29,6 +29,9 @@ Route::get('/about', function () {
 Route::get('/contact', ContactController::class)->name('contact');
 Route::post('/contact', [MessageController::class, 'store']);
 
+Route::get('/edit', EditController::class)->name('edit');
+Route::post('edit', [MessageController::class, 'update']);
+
 Route::resource('message', MessageController::class);
 
 Route::get('/portfolio', function () {
