@@ -14,7 +14,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Mensagens';
+        $message = Message::all();
+        return view('message.index', compact('message', 'title'));
     }
 
     /**
@@ -66,7 +68,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('message.edit');
     }
 
     /**
@@ -78,7 +80,15 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
-        //
+        $data = $request->input();
+
+        $message->first_name = $data['first_name'];
+        $message->first_name = $data['last_name'];
+        $message->first_name = $data['email'];
+        $message->first_name = $data['content'];
+        $message->update();
+
+        return redirect('message.index')->with('status', 'Mensagem Modificada');
     }
 
     /**
@@ -89,6 +99,9 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()
+            ->route('message.index')
+            ->with('status', 'Mensagem Deletada');
     }
 }

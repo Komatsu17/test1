@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EditController;
 use App\Http\Controllers\MessageController;
+use App\Models\Message;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Mime\MessageConverter;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,8 @@ Route::get('/about', function () {
 
 Route::get('/contact', ContactController::class)->name('contact');
 Route::post('/contact', [MessageController::class, 'store']);
+
+Route::resource('message', MessageController::class);
 
 Route::get('/portfolio', function () {
     return view('portfolio');
