@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +23,8 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', ContactController::class)->name('contact');
+Route::post('/contact', [MessageController::class, 'store']);
 
 Route::get('/portfolio', function () {
     return view('portfolio');
