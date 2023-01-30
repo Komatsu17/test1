@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Message;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Mime\MessageConverter;
@@ -18,22 +19,10 @@ use Symfony\Component\Mime\MessageConverter;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
+Route::get('/', WelcomeController::class)->name('home');
 Route::get('/contact', ContactController::class)->name('contact');
-Route::post('/contact', [MessageController::class, 'store']);
 
-Route::get('/edit', EditController::class)->name('edit');
-Route::post('edit', [MessageController::class, 'update']);
+Route::post('/contact', [MessageController::class, 'store'])->name('message.store');
+Route::post('edit/{$message->id}', [MessageController::class, 'update'])->name('messageUpdate');
 
 Route::resource('message', MessageController::class);
-
-Route::get('/portfolio', function () {
-    return view('portfolio');
-})->name('portfolio');

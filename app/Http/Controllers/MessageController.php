@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class MessageController extends Controller
 {
     /**
@@ -68,7 +68,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        // 
+        return view('message.messageEdit', compact('message'));
     }
 
     /**
@@ -80,16 +80,20 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
+        $data = $request->all();
+      
+        $validated = $request->validate([
+            'first_name' => 'required|max:100',
+            'last_name' => 'required|max:100',
+            'email' => 'required|email',
+            'content' => 'required|max:255'
+        ]);
 
-        $data = $request->input();
+        $message->update($validated);
 
-        $message->first_name = $data['first_name'];
-        $message->last_name = $data['last_name'];
-        $message->email = $data['email'];
-        $message->content = $data['content'];
-        $message->save();
+        // dd('test');
 
-        return redirect()->route('message.index')->with('status', 'Mensagem Modificada');
+        return redirect(route('message.index'))->with('status', 'Mensagem Modificada');
     }
 
     /**

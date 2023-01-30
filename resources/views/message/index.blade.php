@@ -15,7 +15,7 @@
             <div>
                 {{ $message->content }}
             </div>
-            <form action="{{ route('edit', $message) }}" method="GET">
+            <form action="{{ route('message.edit', $message) }}" method="GET">
                 @csrf
                 <button type="submit">Editar</button>
             </form>
