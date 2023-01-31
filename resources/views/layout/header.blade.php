@@ -1,6 +1,6 @@
 <header>
     <div class="w50 left">
-        <h1><a href="{{ url('/') }}">Site Teste</a></h1>
+        <h1 class=""><a href="{{ url('/') }}">Site Teste</a></h1>
     </div>
     <div class="w50 left">
         <nav>
