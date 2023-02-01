@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -78,20 +79,13 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(PostRequest $request, Message $message)
     {
         $data = $request->all();
-      
-        $validated = $request->validate([
-            'first_name' => 'required|max:100',
-            'last_name' => 'required|max:100',
-            'email' => 'required|email',
-            'content' => 'required|max:255'
-        ]);
+
+        $validated = $request->validated();
 
         $message->update($validated);
-
-        // dd('test');
 
         return redirect(route('message.index'))->with('status', 'Mensagem Modificada');
     }
