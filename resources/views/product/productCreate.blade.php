@@ -3,19 +3,18 @@
 @section('content') 
     <section class="center">
         <div>
-            <h1>Editar Produto</h1>
-            <form action="{{ route('product.update', $product) }}" method="POST">
+            <h1>Cadastrar Produto</h1>
+            <form action="{{ route('product.store') }}" method="POST">
                 @csrf
-                @method('PUT')
-                <input name="name" type="text" placeholder="Nome" value="{{ $product->name }}">
+                <input name="name" type="text" placeholder="Nome">
                 @error('name')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <input name="price" type="text" placeholder="Preco" value="{{ $product->price }}">
+                <input name="price" type="text" placeholder="Preco">
                 @error('price')
                 <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <input name="quantity" type="text" placeholder="Quantidade" value="{{ $product->quantity }}">
+                <input name="quantity" type="text" placeholder="Quantidade">
                 @error('quantity')
                 <p class="text-red-600">{{ $message }}</p>
                 @enderror
