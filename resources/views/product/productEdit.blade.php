@@ -15,6 +15,10 @@
                 @error('price')
                 <p class="text-red-600">{{ $message }}</p>
                 @enderror
+                <input name="currency" type="text" placeholder="Moeda" value="{{ $product->currency }}">
+                @error('currency')
+                <p class="text-red-600">{{ $message }}</p>
+                @enderror
                 <input name="quantity" type="text" placeholder="Quantidade" value="{{ $product->quantity }}">
                 @error('quantity')
                 <p class="text-red-600">{{ $message }}</p>

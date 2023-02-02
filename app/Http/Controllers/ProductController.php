@@ -43,6 +43,7 @@ class ProductController extends Controller
 
         $product->name = $data['name'];
         $product->price = $data['price'];
+        $product->currency = $data['currency'];
         $product->quantity = $data['quantity'];
         $product->save();
 

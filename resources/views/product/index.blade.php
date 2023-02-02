@@ -1,15 +1,21 @@
 @extends('layout.app')
 
 @section('content')
+    
+    <h1>Produtos</h1>
+    <hr />
+
     @foreach ($products as $product)
         <div class="center">
-            <h1>Produtos</h1>
             <div class="w50 left">
                 <div>
                     {{ $product->name }}
                 </div>
                 <div>
                     {{ $product->price }}
+                </div>
+                <div>
+                    {{ $product->currency }}
                 </div>
                 <div>
                     {{ $product->quantity }}
@@ -26,5 +32,6 @@
             </form>
         </div>    
         <div class="clear"></div>
+        <hr />
     @endforeach
 @endsection
